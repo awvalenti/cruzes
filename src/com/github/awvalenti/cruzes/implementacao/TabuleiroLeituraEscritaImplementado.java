@@ -12,7 +12,8 @@ import com.github.awvalenti.cruzes.api.interfaces.TabuleiroLeituraEscrita;
 public class TabuleiroLeituraEscritaImplementado implements TabuleiroLeituraEscrita {
 
 	private final int dimensao;
-	private CasaImplementada[][] tabuleiro;
+
+	// private CasaImplementada[][] tabuleiro;
 
 	public TabuleiroLeituraEscritaImplementado(final int dimensao) {
 		this.dimensao = dimensao;
@@ -30,14 +31,33 @@ public class TabuleiroLeituraEscritaImplementado implements TabuleiroLeituraEscr
 
 	@Override
 	public CorCasa getCorDaCasa(final Posicao p) throws PosicaoInvalidaException {
-
+		validatePosition(p);
 		return null;
 	}
 
 	@Override
 	public ConteudoCasa getConteudoDaCasa(final Posicao p) throws PosicaoInvalidaException {
-
+		validatePosition(p);
 		return null;
+	}
+
+	private void validatePosition(final Posicao p) throws PosicaoInvalidaException {
+		if (!isPositionValid(p)) {
+			throw new PosicaoInvalidaException();
+		}
+	}
+
+	private boolean isPositionValid(final Posicao p) {
+		if (p == null) {
+			return false;
+		}
+
+		final int position = p.getLinha() * p.getColuna();
+		if (position == 0 || position > this.dimensao * this.dimensao) {
+			return false;
+		}
+
+		return true;
 	}
 
 	@Override
