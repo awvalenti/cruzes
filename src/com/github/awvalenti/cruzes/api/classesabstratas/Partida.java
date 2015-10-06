@@ -13,8 +13,8 @@ public abstract class Partida {
 	protected final AnalisadorTabuleiro analisador;
 	protected final VisualizacaoTabuleiro visualizacaoTabuleiro;
 
-	public Partida(Jogador jogador1, Jogador jogador2, FabricaTabuleiro fabrica,
-			AnalisadorTabuleiro analisador, VisualizacaoTabuleiro visualizacaoTabuleiro) {
+	public Partida(final Jogador jogador1, final Jogador jogador2, final FabricaTabuleiro fabrica, final AnalisadorTabuleiro analisador,
+			final VisualizacaoTabuleiro visualizacaoTabuleiro) {
 		this.jogador1 = jogador1;
 		this.jogador2 = jogador2;
 		this.fabrica = fabrica;
