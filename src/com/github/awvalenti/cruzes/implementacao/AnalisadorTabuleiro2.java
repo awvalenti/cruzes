@@ -1,5 +1,5 @@
 package com.github.awvalenti.cruzes.implementacao;
 
-public class ColoqueSuasClassesAqui {
+public class AnalisadorTabuleiro2 {
 
 }
