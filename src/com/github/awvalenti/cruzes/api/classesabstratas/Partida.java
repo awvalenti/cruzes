@@ -22,4 +22,6 @@ public abstract class Partida {
 		this.visualizacaoTabuleiro = visualizacaoTabuleiro;
 	}
 
+	public abstract void Iniciar();
+
 }
