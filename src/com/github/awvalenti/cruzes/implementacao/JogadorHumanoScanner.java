@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.github.awvalenti.cruzes.api.interfaces.FabricaMovimento;
 import com.github.awvalenti.cruzes.api.interfaces.Jogador;
 import com.github.awvalenti.cruzes.api.interfaces.Movimento;
+import com.github.awvalenti.cruzes.api.interfaces.Posicao;
 
 public class JogadorHumanoScanner implements Jogador{
 
@@ -18,9 +19,8 @@ public class JogadorHumanoScanner implements Jogador{
 		
 		int linhaOrigem=0, colunaOrigem=0, linhaDestino=0, colunaDestino=0;
 		
-		Scanner ler= new Scanner(System.in);
+		Scanner ler= new Scanner(System.in);	
 		
-		fabricaMovimento.criar(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
 		
 		System.out.println("Valor linha Origem:\n");
 		linhaDestino= ler.nextInt();
@@ -35,10 +35,65 @@ public class JogadorHumanoScanner implements Jogador{
 		colunaDestino=ler.nextInt();
 		
 		
-		
+		fabricaMovimento.criar(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
 		
 		
 		return obterMovimentoDesejado();
+	}
+	
+	public static void main(String[] args) {
+		JogadorHumanoScanner j1=new JogadorHumanoScanner(new FabricaMovimento() {
+			
+			@Override
+			public Movimento criar(final int linhaOrigem, final int colunaOrigem, final int linhaDestino,
+					final int colunaDestino) {
+				// TODO Auto-generated method stub
+				return new Movimento() {
+					
+					@Override
+					public Posicao getOrigem() {
+						// TODO Auto-generated method stub
+						return new Posicao() {
+							
+							@Override
+							public int getLinha() {
+								// TODO Auto-generated method stub
+								return linhaOrigem;
+							}
+							
+							@Override
+							public int getColuna() {
+								// TODO Auto-generated method stub
+								return colunaOrigem;
+							}
+						};
+					}
+					
+					@Override
+					public Posicao getDestino() {
+						// TODO Auto-generated method stub
+						return new Posicao() {
+							
+							@Override
+							public int getLinha() {
+								// TODO Auto-generated method stub
+								return linhaDestino;
+							}
+							
+							@Override
+							public int getColuna() {
+								// TODO Auto-generated method stub
+								return colunaDestino;
+							}
+						};
+					}
+				};
+				
+				
+			}
+		});
+		
+		j1.obterMovimentoDesejado();
 	}
 
 }
