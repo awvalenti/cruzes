@@ -35,10 +35,10 @@ public class JogadorHumanoScanner implements Jogador{
 		colunaDestino=ler.nextInt();
 		
 		
-		fabricaMovimento.criar(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
 		
 		
-		return obterMovimentoDesejado();
+		
+		return fabricaMovimento.criar(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
 	}
 	
 	public static void main(String[] args) {
@@ -74,7 +74,7 @@ public class JogadorHumanoScanner implements Jogador{
 						// TODO Auto-generated method stub
 						return new Posicao() {
 							
-							@Override
+							@Override 
 							public int getLinha() {
 								// TODO Auto-generated method stub
 								return linhaDestino;
