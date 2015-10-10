@@ -1,5 +1,8 @@
 package com.github.awvalenti.cruzes.implementacao;
 
+import java.io.DataInputStream;
+import java.io.IOException;
+
 import com.github.awvalenti.cruzes.api.interfaces.Movimento;
 import com.github.awvalenti.cruzes.api.interfaces.Posicao;
 
@@ -12,7 +15,6 @@ public class MovimentoConcreto implements Movimento {
 		this.origem = origem;
 		this.destino = destino;
 	}
-	
 	
 	@Override
 	public Posicao getOrigem() {
