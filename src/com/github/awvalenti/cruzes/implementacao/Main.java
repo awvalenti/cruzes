@@ -12,7 +12,7 @@ public class Main {
 
 		JFrame janela = VisualizacaoTabuleiro.criarJanela();
 		MouseAdapter tratadorCliques = new VisualizacaoTabuleiro.TratadorCliques();
-		VisualizacaoTabuleiro.preencherJanelaComCasas(VisualizacaoTabuleiro.tabuleiroBase.Base, janela, tratadorCliques);
+		VisualizacaoTabuleiro.preencherJanelaComCasas(VisualizacaoTabuleiro.tabuleiroBase, janela, tratadorCliques);
 		VisualizacaoTabuleiro.exibirJanela(janela);
 	}
 }
