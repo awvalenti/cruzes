@@ -11,11 +11,11 @@ public class TabuleiroTeste {
 
 		casas = new Casa[][] {
 				
-				{ new Casa(new Peca(XIS,1)), new Casa(new Peca(NULO,0)), new Casa(new Peca(XIS,1)), new Casa(new Peca(NULO,0)), new Casa(new Peca(XIS,1))},
-				{ new Casa(new Peca(NULO,0)), new Casa(new Peca(NULO,0)), new Casa(new Peca(NULO,0)), new Casa(new Peca(NULO,0)), new Casa(new Peca(NULO,0))},
-				{ new Casa(new Peca(NULO,0)), new Casa(new Peca(NULO,0)), new Casa(new Peca(NULO,0)), new Casa(new Peca(NULO,0)), new Casa(new Peca(NULO,0))},
-				{ new Casa(new Peca(NULO,0)), new Casa(new Peca(NULO,0)), new Casa(new Peca(NULO,0)), new Casa(new Peca(NULO,0)), new Casa(new Peca(NULO,0))},
-				{ new Casa(new Peca(MAIS,2)), new Casa(new Peca(NULO,0)), new Casa(new Peca(MAIS,2)), new Casa(new Peca(NULO,0)), new Casa(new Peca(MAIS,2))}
+				{ new Casa(new Peca(XIS,"XIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(XIS,"XIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(XIS,"XIS"))},
+				{ new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO"))},
+				{ new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO"))},
+				{ new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO"))},
+				{ new Casa(new Peca(MAIS,"MAIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(MAIS,"MAIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(MAIS,"MAIS"))}
 		};	
 	}
 

@@ -6,8 +6,9 @@ import javax.swing.JFrame;
 
 import com.github.awvalenti.cruzes.api.interfaces.VisualizacaoTabuleiro;
 
+
 public class Main {
-	
+
 	public static void main(String[] args) {
 
 		JFrame janela = VisualizacaoTabuleiro.criarJanela();

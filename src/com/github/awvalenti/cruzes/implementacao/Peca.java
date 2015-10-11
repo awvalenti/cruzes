@@ -5,9 +5,9 @@ import javax.swing.ImageIcon;
 public class Peca {
 	
 	private RecortePeca recortePeca;
-	public int tipoDePeca;
+	public String tipoDePeca;
 
-	public Peca(RecortePeca tipoDePeca, int tipo) {
+	public Peca(RecortePeca tipoDePeca, String tipo) {
 		super();
 		this.recortePeca = tipoDePeca;
 		this.tipoDePeca = tipo;
