@@ -9,10 +9,8 @@ import javax.swing.JFrame;
 
 import com.github.awvalenti.cruzes.api.interfaces.VisualizacaoTabuleiro;
 
-
 public class Main {
 
-<<<<<<< HEAD
 	static int LARGURA;
 	static List<Integer> LargurasDisp = new ArrayList<Integer>();
 
@@ -31,19 +29,13 @@ public class Main {
 		}while(Disp != true);
 		scan.close();
 	}
-	
-	public static void main(String[] args) {
 
+	public static void main(String[] args) {
+		
 		LargurasDisp.add(5);LargurasDisp.add(7);LargurasDisp.add(9);
 		SetLargura();
 		JFrame janela = VisualizacaoTabuleiro.criarJanela(LARGURA);
 		TabuleiroTeste virtualTeste = new TabuleiroTeste(LARGURA);
-=======
-	public static void main(String[] args) {
-
-		JFrame janela = VisualizacaoTabuleiro.criarJanela();
-		TabuleiroTeste virtualTeste = new TabuleiroTeste();
->>>>>>> 6de08ad29043dd308aad7f9bebad17f9d68d4923
 		MouseAdapter tratadorCliques = new VisualizacaoTabuleiro.TratadorCliques(); 
 		VisualizacaoTabuleiro.preencherJanelaComCasas(virtualTeste, janela, tratadorCliques);
 		VisualizacaoTabuleiro.exibirJanela(janela);

@@ -39,11 +39,7 @@ public interface VisualizacaoTabuleiro {
 				label.setBackground((i+j)%2 == 0 ? COR_CASA_NAO_SELECIONADA_1 : COR_CASA_NAO_SELECIONADA_2);
 				label.setOpaque(true);
 				label.addMouseListener(tratadorCliques);
-<<<<<<< HEAD
 				label.setName(peca.nomePeca);
-=======
-				label.setName(peca.tipoDePeca);
->>>>>>> 6de08ad29043dd308aad7f9bebad17f9d68d4923
 				janela.add(label);
 				}
 		}
@@ -81,17 +77,14 @@ public interface VisualizacaoTabuleiro {
 		}
 
 		private void moverPeca(JLabel casaClicada) {
-<<<<<<< HEAD
 			if(casaClicada == casaSelecionada) {
 				casaClicada.setBackground(EX_COR_CASA_SELECIONADA);
 				casaSelecionada = null; 
 				return;
 			} else {
 			//if(casaClicada.getName().compareTo("NULO") == 0) {
-=======
 			
-			if(casaClicada.getName().compareTo("NULO") == 0) {
->>>>>>> 6de08ad29043dd308aad7f9bebad17f9d68d4923
+				if(casaClicada.getName().compareTo("NULO") == 0) {
 				//if(casaSelecionada.getName().compareTo("XIS") == 0) {
 					//if(casaSelecionada.getY() != casaClicada.getY() && casaSelecionada.getX() != casaClicada.getX()) 
 						casaClicada.setIcon((ImageIcon) casaSelecionada.getIcon()); 
@@ -110,7 +103,8 @@ public interface VisualizacaoTabuleiro {
 						//casaSelecionada.setName("NULO");
 						//casaSelecionada = null;
 					//}
-			//}
+					//}
+				}
 			}
 		}
 	}
