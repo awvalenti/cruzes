@@ -5,12 +5,12 @@ import javax.swing.ImageIcon;
 public class Peca {
 	
 	private RecortePeca recortePeca;
-	public String tipoDePeca;
+	public String nomePeca;
 
 	public Peca(RecortePeca tipoDePeca, String tipo) {
 		super();
 		this.recortePeca = tipoDePeca;
-		this.tipoDePeca = tipo;
+		this.nomePeca = tipo;
 	}
 	
 	public ImageIcon getPeca() {
