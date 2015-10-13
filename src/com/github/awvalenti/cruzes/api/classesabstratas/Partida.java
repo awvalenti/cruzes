@@ -12,6 +12,7 @@ public abstract class Partida {
 	protected final FabricaTabuleiro fabrica;
 	protected final AnalisadorTabuleiro analisador;
 	protected final VisualizacaoTabuleiro visualizacaoTabuleiro;
+	
 
 	public Partida(Jogador jogador1, Jogador jogador2, FabricaTabuleiro fabrica,
 			AnalisadorTabuleiro analisador, VisualizacaoTabuleiro visualizacaoTabuleiro) {
