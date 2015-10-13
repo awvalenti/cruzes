@@ -17,8 +17,16 @@ public class JogadorIA implements Jogador{
 
 	@Override
 	public Movimento obterMovimentoDesejado() {
-		// TODO Auto-generated method stub
+		Random gerador = new Random();
 		
+		int linhaOrigem,colunaOrigem,linhaDestino,colunaDestino;
+		
+		linhaOrigem=gerador.nextInt(4);
+		colunaOrigem=gerador.nextInt(4);
+		linhaDestino=gerador.nextInt(4);
+		colunaDestino=gerador.nextInt(4);
+		
+		fabrica.criar(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
 		
 		return null;
 	}
