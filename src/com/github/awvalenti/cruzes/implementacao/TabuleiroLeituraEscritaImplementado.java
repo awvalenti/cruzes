@@ -34,7 +34,7 @@ public class TabuleiroLeituraEscritaImplementado implements TabuleiroLeituraEscr
 		this.tabuleiro = new CasaImplementada[this.dimensao][this.dimensao];
 		for (int x = 0; x < tabuleiro.length; x++) {
 			for (int y = 0; y < tabuleiro[x].length; y++) {
-				this.tabuleiro[x][y] = new CasaImplementada(escolherCor(x, y), escolherConteudo(y));
+				this.tabuleiro[x][y] = new CasaImplementada(escolherCor(x + y), escolherConteudo(y));
 			}
 		}
 	}
@@ -51,8 +51,8 @@ public class TabuleiroLeituraEscritaImplementado implements TabuleiroLeituraEscr
 		return NADA;
 	}
 
-	private CorCasa escolherCor(final int x, final int y) {
-		return (((x + y) % 2) > 0) ? BRANCA : PRETA;
+	private CorCasa escolherCor(final int un) {
+		return ((un % 2) > 0) ? BRANCA : PRETA;
 	}
 
 	@Override

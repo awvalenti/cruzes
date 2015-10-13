@@ -6,18 +6,31 @@ import com.github.awvalenti.cruzes.api.interfaces.Casa;
 
 public class CasaImplementada implements Casa {
 
+	private ConteudoCasa conteudo;
+	private final CorCasa cor;
+
+	public CasaImplementada(final CorCasa cor) {
+		this(cor, ConteudoCasa.NADA);
+	}
+
+	public CasaImplementada(final CorCasa cor, final ConteudoCasa conteudo) {
+		this.cor = cor;
+		this.conteudo = conteudo;
+	}
+
 	@Override
 	public CorCasa getCor() {
-		return null;
+		return cor;
 	}
 
 	@Override
 	public ConteudoCasa getConteudo() {
-		return null;
+		return conteudo;
 	}
 
 	@Override
 	public void setConteudo(final ConteudoCasa conteudo) {
+		this.conteudo = conteudo;
 	}
 
 }
