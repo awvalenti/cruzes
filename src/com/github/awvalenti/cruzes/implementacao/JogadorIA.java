@@ -28,7 +28,7 @@ public class JogadorIA implements Jogador{
 		
 		fabrica.criar(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
 		
-		return null;
+		return fabrica.criar(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
 	}
 	
 	
