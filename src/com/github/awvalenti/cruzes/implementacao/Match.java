@@ -17,13 +17,15 @@ public class Match extends Partida {
 	private TabuleiroLeituraEscrita tabuleiro;
 	private Movimento movimentoAtual;
 	private Time timeAtual;
-	private int numeroLinhasTabuleiro;
-	private int numeroColunasTabuleiro;
+	private final int numeroLinhasTabuleiro;
+	private final int numeroColunasTabuleiro;
 	private static final boolean DEBUG = false;
 
 	// Por padrão assume tabuleiro 5x5
-	public Match(Jogador jogador1, Jogador jogador2, FabricaTabuleiro fabrica, AnalisadorTabuleiro analisador,
-			VisualizacaoTabuleiro visualizacaoTabuleiro) {
+	public Match(final Jogador jogador1, final Jogador jogador2,
+			final FabricaTabuleiro fabrica,
+			final AnalisadorTabuleiro analisador,
+			final VisualizacaoTabuleiro visualizacaoTabuleiro) {
 		super(jogador1, jogador2, fabrica, analisador, visualizacaoTabuleiro);
 		// TODO Auto-generated constructor stub
 		numeroLinhasTabuleiro = 5;
@@ -31,8 +33,11 @@ public class Match extends Partida {
 	}
 
 	// Construtor para tabuleiros de tamanho qualquer
-	public Match(Jogador jogador1, Jogador jogador2, FabricaTabuleiro fabrica, AnalisadorTabuleiro analisador,
-			VisualizacaoTabuleiro visualizacaoTabuleiro, int numeroLinhasTabuleiro, int numeroColunasTabuleiro) {
+	public Match(final Jogador jogador1, final Jogador jogador2,
+			final FabricaTabuleiro fabrica,
+			final AnalisadorTabuleiro analisador,
+			final VisualizacaoTabuleiro visualizacaoTabuleiro,
+			final int numeroLinhasTabuleiro, final int numeroColunasTabuleiro) {
 		super(jogador1, jogador2, fabrica, analisador, visualizacaoTabuleiro);
 		this.numeroLinhasTabuleiro = numeroLinhasTabuleiro;
 		this.numeroColunasTabuleiro = numeroColunasTabuleiro;
@@ -42,24 +47,23 @@ public class Match extends Partida {
 	public void iniciar() {
 		// TODO Auto-generated method stub
 
-
 		if (DEBUG) {
 			System.out.println("Criando tabuleiro");
 		}
 
 		try {
-			tabuleiro = fabrica.criarTabuleiro(numeroLinhasTabuleiro, numeroColunasTabuleiro);
-		} catch (TamanhoInvalidoException e) {
-			System.out.println("O tamanho para criação do tabuleiro não é válido!");
+			tabuleiro = fabrica.criarTabuleiro(numeroLinhasTabuleiro,
+					numeroColunasTabuleiro);
+		} catch (final TamanhoInvalidoException e) {
+			System.out
+			.println("O tamanho para criação do tabuleiro não é válido!");
 			return;
 		}
 
-		
-
 		while (!analisador.determinarEstado(tabuleiro).isFinalizado()) {
-			
+
 			visualizacaoTabuleiro.desenhar(tabuleiro);
-			
+
 			timeAtual = tabuleiro.getVezDeQuem();
 
 			if (DEBUG) {
@@ -83,16 +87,18 @@ public class Match extends Partida {
 
 			try {
 				tabuleiro.fazerMovimento(movimentoAtual);
-			} catch (PosicaoInvalidaException e) {
+			} catch (final PosicaoInvalidaException e) {
 				System.out.println("Posição Inválida!");
-			} catch (MovimentoInvalidoException e) {
+			} catch (final MovimentoInvalidoException e) {
 				System.out.println("Movimento Inválido!");
 			}
 
 		} // fim iteração while
-		
-		System.out.println("Fim de Jogo! Ganhador: " + analisador.determinarEstado(tabuleiro).getTimeVencedor().toString());
-		
+
+		System.out.println("Fim de Jogo! Ganhador: "
+				+ analisador.determinarEstado(tabuleiro).getTimeVencedor()
+				.toString());
+
 	}
 
 }
