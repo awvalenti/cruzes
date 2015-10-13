@@ -1,13 +1,11 @@
 package com.github.awvalenti.cruzes.api.enums;
 
 public enum Time {
-
-	MAIS('+'), XIS('x'),
-	;
+	MAIS('+'), XIS('x');
 
 	private final char caractere;
 
-	private Time(char caractere) {
+	private Time(final char caractere) {
 		this.caractere = caractere;
 	}
 
