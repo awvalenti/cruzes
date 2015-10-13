@@ -44,6 +44,7 @@ public interface VisualizacaoTabuleiro {
 				label.setBackground((i+j)%2 == 0 ? COR_CASA_NAO_SELECIONADA_1 : COR_CASA_NAO_SELECIONADA_2);
 				label.setOpaque(true);
 				label.addMouseListener(tratadorCliques);
+				label.setName(peca.tipoDePeca);
 				janela.add(label);
 				}
 		}
@@ -57,12 +58,13 @@ public interface VisualizacaoTabuleiro {
 	static class TratadorCliques extends MouseAdapter {
 		
 		private JLabel casaSelecionada;
+		private Color EX_COR_CASA_SELECIONADA;
 		
 		@Override
 		public void mousePressed(MouseEvent e) {
 			
 			JLabel casaClicada = (JLabel) e.getSource();		
-			boolean clicouCasaVazia = false; //pecasEcasas.LABEL_VAZIA.contains(casaClicada);
+			boolean clicouCasaVazia = casaClicada.getName().compareTo("NULO") == 0;
 			if (nenhumaCasaSelecionada() && clicouCasaVazia) return;		
 			if (nenhumaCasaSelecionada()) selecionarCasa(casaClicada);		
 			else moverPeca(casaClicada);
@@ -72,32 +74,35 @@ public interface VisualizacaoTabuleiro {
 			return casaSelecionada == null;
 		}
 
-		private void selecionarCasa(JLabel casaClicada) {			
+		private void selecionarCasa(JLabel casaClicada) {
+			EX_COR_CASA_SELECIONADA = casaClicada.getBackground();
 			casaClicada.setBackground(COR_CASA_SELECIONADA);		
 			casaSelecionada = casaClicada;
 		}
 
 		private void moverPeca(JLabel casaClicada) {
 			
-			if(casaClicada.getIcon() == null) {
-				
-				casaClicada.setIcon((ImageIcon) casaSelecionada.getIcon()); 
-				casaSelecionada.setIcon(null);
-				casaSelecionada = null;
-				//if(casaSelecionada.getIcon()  .getText().equals("x")) {
-						//if(casaSelecionada.getY() != casaClicada.getY() && casaSelecionada.getX() != casaClicada.getX()) 
-						//casaClicada.setIcon((ImageIcon) casaSelecionada.getIcon()); 
-						//casaSelecionada.setIcon(null);
-						//casaSelecionada = null;
-						//}
+			if(casaClicada.getName().compareTo("NULO") == 0) {
+				//if(casaSelecionada.getName().compareTo("XIS") == 0) {
+					//if(casaSelecionada.getY() != casaClicada.getY() && casaSelecionada.getX() != casaClicada.getX()) 
+						casaClicada.setIcon((ImageIcon) casaSelecionada.getIcon()); 
+						casaClicada.setName(casaSelecionada.getName());
+						casaSelecionada.setBackground(EX_COR_CASA_SELECIONADA);
+						casaSelecionada.setIcon(null);
+						casaSelecionada.setName("NULO");
+						casaSelecionada = null;
+					//}
 				//}
-				//if(casaSelecionada.getText().equals("+")) {
-						//if(casaSelecionada.getY() == casaClicada.getY() || casaSelecionada.getX() == casaClicada.getX()) {
-							//casaClicada.setIcon(casaSelecionada.getIcon()); 
-							//casaSelecionada.setIcon(null);
-							//casaSelecionada = null;
-						//}
-				}
+				//if(casaSelecionada.getName().compareTo("XIS") == 0) {
+					//if(casaSelecionada.getY() != casaClicada.getY() && casaSelecionada.getX() != casaClicada.getX()) 
+						//casaClicada.setIcon((ImageIcon) casaSelecionada.getIcon()); 
+						//casaClicada.setName(casaSelecionada.getName());
+						//casaSelecionada.setIcon(null);
+						//casaSelecionada.setName("NULO");
+						//casaSelecionada = null;
+					//}
+			//}
 			}
 		}
+	}
 }
