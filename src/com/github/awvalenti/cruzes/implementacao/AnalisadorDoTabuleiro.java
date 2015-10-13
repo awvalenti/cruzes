@@ -13,7 +13,6 @@ public class AnalisadorDoTabuleiro implements AnalisadorTabuleiro {
 	public EstadoJogo determinarEstado(TabuleiroLeitura tabuleiro) {
 		boolean terminou = false;
 		Time timeVencedor = null;
-		
 
 		int qtdXis, qtdMais;
 		qtdMais = qtdXis = 0;
@@ -49,24 +48,35 @@ public class AnalisadorDoTabuleiro implements AnalisadorTabuleiro {
 					terminou = true;
 					timeVencedor = Time.MAIS;
 
+					System.out.println("Xis perdeu por falta de peças");
+
 					return new EstadoDoJogo(terminou, timeVencedor);
 				}
 
 				if (qtdMais == 0) {
 					terminou = true;
 					timeVencedor = Time.XIS;
+
+					System.out.println("Mais perdeu por falta de peças");
+
 					return new EstadoDoJogo(terminou, timeVencedor);
 				}
 
 				if (estahTravado(tabuleiro, ConteudoCasa.XIS)) {
 					terminou = true;
 					timeVencedor = Time.MAIS;
+
+					System.out.println("Xis perdeu por estar travado");
+
 					return new EstadoDoJogo(terminou, timeVencedor);
 				}
 
 				if (estahTravado(tabuleiro, ConteudoCasa.MAIS)) {
 					terminou = true;
 					timeVencedor = Time.XIS;
+
+					System.out.println("Mais perdeu por estar travado");
+
 					return new EstadoDoJogo(terminou, timeVencedor);
 				}
 
@@ -77,12 +87,12 @@ public class AnalisadorDoTabuleiro implements AnalisadorTabuleiro {
 	}
 
 	private boolean estahTravado(TabuleiroLeitura tabuleiro, ConteudoCasa conteudo) {
-		boolean estahTravado = true;
+		boolean estahTravado = false;
 		for (int i = 0; i < tabuleiro.getNumeroColunas(); i++) {
 			for (int j = 0; j < tabuleiro.getNumeroLinhas(); j++) {
 				try {
 					if (tabuleiro.getConteudoDaCasa(new Posicao(i, j)).equals(conteudo)) {
-						if (temMovimentoPossivel(tabuleiro, conteudo, new Posicao(i, j))) {
+						if (!temMovimentoPossivel(tabuleiro, conteudo, new Posicao(i, j))) {
 							estahTravado = true;
 						}
 					}
@@ -99,50 +109,78 @@ public class AnalisadorDoTabuleiro implements AnalisadorTabuleiro {
 		int linha = posicao.getLinha();
 		int coluna = posicao.getColuna();
 
-
-			if (conteudo == ConteudoCasa.XIS) {
-				return verificaSeXTemCasasVaziasAoRedor(tabuleiro, linha, coluna);
-			}
-			if (conteudo == ConteudoCasa.MAIS) {
-				return verificaSeMaisTemCasaVaziaAoRedor(tabuleiro, linha, coluna);
-			}
+		if (conteudo == ConteudoCasa.XIS) {
+			System.out.println("XIS: "+verificaSeXTemCasasVaziasAoRedor(tabuleiro, linha, coluna));
+			return verificaSeXTemCasasVaziasAoRedor(tabuleiro, linha, coluna);
+		}
+		if (conteudo == ConteudoCasa.MAIS) {
+			System.out.println("Mais: "+ verificaSeXTemCasasVaziasAoRedor(tabuleiro, linha, coluna));
+			return verificaSeMaisTemCasaVaziaAoRedor(tabuleiro, linha, coluna);
+		}
 
 		return false;
 
 	}
 
-	private boolean verificaSeMaisTemCasaVaziaAoRedor(TabuleiroLeitura tabuleiro, int linha, int coluna){
-		try{
+	private boolean verificaSeMaisTemCasaVaziaAoRedor(TabuleiroLeitura tabuleiro, int linha, int coluna) {
+		try {
 			if (tabuleiro.getConteudoDaCasa(new Posicao(linha + 1, coluna)) == ConteudoCasa.NADA)
 				return true;
+		} catch (PosicaoInvalidaException e) {
+			// Não existe...
+		}
+
+		try {
 			if (tabuleiro.getConteudoDaCasa(new Posicao(linha - 1, coluna)) == ConteudoCasa.NADA)
 				return true;
+		} catch (PosicaoInvalidaException e) {
+			// Não existe...
+		}
+
+		try {
 			if (tabuleiro.getConteudoDaCasa(new Posicao(linha, coluna + 1)) == ConteudoCasa.NADA)
 				return true;
+		} catch (PosicaoInvalidaException e) {
+			// Não existe...
+		}
+
+		try {
 			if (tabuleiro.getConteudoDaCasa(new Posicao(linha, coluna - 1)) == ConteudoCasa.NADA)
 				return true;
-		}catch(PosicaoInvalidaException e){
-			//Não existe...
+		} catch (PosicaoInvalidaException e) {
+			// Não existe...
 		}
-		
 
 		return false;
 	}
 
-	private boolean verificaSeXTemCasasVaziasAoRedor(TabuleiroLeitura tabuleiro, int linha, int coluna)	{
-		try{
+	private boolean verificaSeXTemCasasVaziasAoRedor(TabuleiroLeitura tabuleiro, int linha, int coluna) {
+		try {
 			if (tabuleiro.getConteudoDaCasa(new Posicao(linha + 1, coluna + 1)) == ConteudoCasa.NADA)
 				return true;
+		} catch (PosicaoInvalidaException e) {
+			// Não existe
+		}
+		try{
 			if (tabuleiro.getConteudoDaCasa(new Posicao(linha + 1, coluna - 1)) == ConteudoCasa.NADA)
 				return true;
-			if (tabuleiro.getConteudoDaCasa(new Posicao(linha - 1, coluna + 1)) == ConteudoCasa.NADA)
-				return true;
-			if (tabuleiro.getConteudoDaCasa(new Posicao(linha - 1, coluna - 1)) == ConteudoCasa.NADA)
-				return true;			
-		}catch(PosicaoInvalidaException e){
-			//Não existe
+		} catch (PosicaoInvalidaException e) {
+			// Não existe
 		}
 		
+		try{
+			if (tabuleiro.getConteudoDaCasa(new Posicao(linha - 1, coluna + 1)) == ConteudoCasa.NADA)
+				return true;
+		}catch (PosicaoInvalidaException e) {
+			// Não existe
+		}
+		
+		try{
+			if (tabuleiro.getConteudoDaCasa(new Posicao(linha - 1, coluna - 1)) == ConteudoCasa.NADA)
+				return true;			
+		} catch (PosicaoInvalidaException e) {
+			// Não existe
+		}
 
 		return false;
 	}
