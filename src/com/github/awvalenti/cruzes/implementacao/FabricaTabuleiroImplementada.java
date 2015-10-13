@@ -10,30 +10,34 @@ public class FabricaTabuleiroImplementada implements FabricaTabuleiro {
 
 	@Override
 	public TabuleiroLeituraEscrita criarTabuleiro(final int numeroLinhas, final int numeroColunas) throws TamanhoInvalidoException {
-		if (!isInputValid(numeroLinhas, numeroColunas)) {
+		if (!entraEhValida(numeroLinhas, numeroColunas)) {
 			throw new TamanhoInvalidoException();
 		}
 
 		return new TabuleiroLeituraEscritaImplementado(numeroLinhas);
 	}
 
-	private boolean isInputValid(final int numeroLinhas, final int numeroColunas) {
-		// Não é quadrado
+	private boolean entraEhValida(final int numeroLinhas, final int numeroColunas) {
 		if (numeroLinhas != numeroColunas) {
+			// Não é quadrado
 			return false;
 		}
 
-		// Não é maior que 5
 		if (numeroLinhas < MIN_SIZE) {
+			// É menor que 5
 			return false;
 		}
 
-		// Não é impar
-		if (numeroLinhas % 2 == 0) {
+		if (ehPar(numeroLinhas)) {
+			// É par
 			return false;
 		}
 
 		return true;
+	}
+
+	private boolean ehPar(final int numeroLinhas) {
+		return numeroLinhas % 2 == 0;
 	}
 
 }

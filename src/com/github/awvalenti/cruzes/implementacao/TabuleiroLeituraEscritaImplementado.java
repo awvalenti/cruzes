@@ -17,21 +17,19 @@ import com.github.awvalenti.cruzes.api.interfaces.TabuleiroLeituraEscrita;
 
 public class TabuleiroLeituraEscritaImplementado implements TabuleiroLeituraEscrita {
 
-	private final int dimensao;
-
+	private final int tamanho;
 	private final CasaImplementada[][] tabuleiro;
-
 	private Time vez;
 
-	public TabuleiroLeituraEscritaImplementado(final int dimensao) {
+	public TabuleiroLeituraEscritaImplementado(final int tamanho) {
 		// Tamanho
-		this.dimensao = dimensao;
+		this.tamanho = tamanho;
 
 		// Turnos
 		this.vez = Time.XIS;
 
 		// Tabuleiro
-		this.tabuleiro = new CasaImplementada[this.dimensao][this.dimensao];
+		this.tabuleiro = new CasaImplementada[this.tamanho][this.tamanho];
 		for (int x = 0; x < tabuleiro.length; x++) {
 			for (int y = 0; y < tabuleiro[x].length; y++) {
 				this.tabuleiro[x][y] = new CasaImplementada(escolherCor(x + y), escolherConteudo(y));
@@ -44,7 +42,7 @@ public class TabuleiroLeituraEscritaImplementado implements TabuleiroLeituraEscr
 			return XIS;
 		}
 
-		if (y + 1 == this.dimensao) {
+		if (y + 1 == this.tamanho) {
 			return MAIS;
 		}
 
@@ -57,12 +55,12 @@ public class TabuleiroLeituraEscritaImplementado implements TabuleiroLeituraEscr
 
 	@Override
 	public int getNumeroLinhas() {
-		return dimensao;
+		return tamanho;
 	}
 
 	@Override
 	public int getNumeroColunas() {
-		return dimensao;
+		return tamanho;
 	}
 
 	@Override
@@ -92,7 +90,7 @@ public class TabuleiroLeituraEscritaImplementado implements TabuleiroLeituraEscr
 		}
 
 		final int position = p.getLinha() * p.getColuna();
-		if (position == 0 || position > this.dimensao * this.dimensao) {
+		if (position == 0 || position > this.tamanho * this.tamanho) {
 			return false;
 		}
 
