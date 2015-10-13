@@ -13,6 +13,7 @@ public class AnalisadorDoTabuleiro implements AnalisadorTabuleiro {
 	public EstadoJogo determinarEstado(TabuleiroLeitura tabuleiro) {
 		boolean terminou = false;
 		Time timeVencedor = null;
+		
 
 		int qtdXis, qtdMais;
 		qtdMais = qtdXis = 0;
@@ -98,44 +99,50 @@ public class AnalisadorDoTabuleiro implements AnalisadorTabuleiro {
 		int linha = posicao.getLinha();
 		int coluna = posicao.getColuna();
 
-		try {
+
 			if (conteudo == ConteudoCasa.XIS) {
 				return verificaSeXTemCasasVaziasAoRedor(tabuleiro, linha, coluna);
 			}
 			if (conteudo == ConteudoCasa.MAIS) {
 				return verificaSeMaisTemCasaVaziaAoRedor(tabuleiro, linha, coluna);
 			}
-		} catch (PosicaoInvalidaException e) {
-			// Deu ruim...
+
+		return false;
+
+	}
+
+	private boolean verificaSeMaisTemCasaVaziaAoRedor(TabuleiroLeitura tabuleiro, int linha, int coluna){
+		try{
+			if (tabuleiro.getConteudoDaCasa(new Posicao(linha + 1, coluna)) == ConteudoCasa.NADA)
+				return true;
+			if (tabuleiro.getConteudoDaCasa(new Posicao(linha - 1, coluna)) == ConteudoCasa.NADA)
+				return true;
+			if (tabuleiro.getConteudoDaCasa(new Posicao(linha, coluna + 1)) == ConteudoCasa.NADA)
+				return true;
+			if (tabuleiro.getConteudoDaCasa(new Posicao(linha, coluna - 1)) == ConteudoCasa.NADA)
+				return true;
+		}catch(PosicaoInvalidaException e){
+			//Não existe...
 		}
-		return false;
-
-	}
-
-	private boolean verificaSeMaisTemCasaVaziaAoRedor(TabuleiroLeitura tabuleiro, int linha, int coluna)
-			throws PosicaoInvalidaException {
-		if (tabuleiro.getConteudoDaCasa(new Posicao(linha + 1, coluna)) == ConteudoCasa.NADA)
-			return true;
-		if (tabuleiro.getConteudoDaCasa(new Posicao(linha - 1, coluna)) == ConteudoCasa.NADA)
-			return true;
-		if (tabuleiro.getConteudoDaCasa(new Posicao(linha, coluna + 1)) == ConteudoCasa.NADA)
-			return true;
-		if (tabuleiro.getConteudoDaCasa(new Posicao(linha, coluna - 1)) == ConteudoCasa.NADA)
-			return true;
+		
 
 		return false;
 	}
 
-	private boolean verificaSeXTemCasasVaziasAoRedor(TabuleiroLeitura tabuleiro, int linha, int coluna)
-			throws PosicaoInvalidaException {
-		if (tabuleiro.getConteudoDaCasa(new Posicao(linha + 1, coluna + 1)) == ConteudoCasa.NADA)
-			return true;
-		if (tabuleiro.getConteudoDaCasa(new Posicao(linha + 1, coluna - 1)) == ConteudoCasa.NADA)
-			return true;
-		if (tabuleiro.getConteudoDaCasa(new Posicao(linha - 1, coluna + 1)) == ConteudoCasa.NADA)
-			return true;
-		if (tabuleiro.getConteudoDaCasa(new Posicao(linha - 1, coluna - 1)) == ConteudoCasa.NADA)
-			return true;
+	private boolean verificaSeXTemCasasVaziasAoRedor(TabuleiroLeitura tabuleiro, int linha, int coluna)	{
+		try{
+			if (tabuleiro.getConteudoDaCasa(new Posicao(linha + 1, coluna + 1)) == ConteudoCasa.NADA)
+				return true;
+			if (tabuleiro.getConteudoDaCasa(new Posicao(linha + 1, coluna - 1)) == ConteudoCasa.NADA)
+				return true;
+			if (tabuleiro.getConteudoDaCasa(new Posicao(linha - 1, coluna + 1)) == ConteudoCasa.NADA)
+				return true;
+			if (tabuleiro.getConteudoDaCasa(new Posicao(linha - 1, coluna - 1)) == ConteudoCasa.NADA)
+				return true;			
+		}catch(PosicaoInvalidaException e){
+			//Não existe
+		}
+		
 
 		return false;
 	}

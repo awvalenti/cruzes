@@ -6,7 +6,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		TabuleiroLeituraImpl tab = new TabuleiroLeituraImpl();
-		tab.preencherTabuleiroCenario1();
+		tab.preencherTabuleiroCenario2();
 		AnalisadorDoTabuleiro analisador = new AnalisadorDoTabuleiro();
 		
 		EstadoJogo estado = analisador.determinarEstado(tab);
