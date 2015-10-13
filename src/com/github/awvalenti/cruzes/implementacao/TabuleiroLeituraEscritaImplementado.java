@@ -17,6 +17,7 @@ import com.github.awvalenti.cruzes.api.interfaces.TabuleiroLeituraEscrita;
 
 public class TabuleiroLeituraEscritaImplementado implements TabuleiroLeituraEscrita {
 
+	private static final int MAX_MOVIMENTO = 1;
 	private final int tamanho;
 	private final CasaImplementada[][] tabuleiro;
 	private Time vez;
@@ -122,10 +123,37 @@ public class TabuleiroLeituraEscritaImplementado implements TabuleiroLeituraEscr
 		casaOrigem.setConteudo(NADA);
 	}
 
+	@SuppressWarnings("incomplete-switch")
 	private void validateMovimento(final Posicao origem, final Posicao destino) throws PosicaoInvalidaException, MovimentoInvalidoException {
-		if (this.getConteudoDaCasa(origem).equals(NADA) || !this.getConteudoDaCasa(destino).equals(NADA)) {
+		final ConteudoCasa conteudoOrigem = this.getConteudoDaCasa(origem);
+		final ConteudoCasa conteudoDestino = this.getConteudoDaCasa(destino);
+
+		if (conteudoOrigem.equals(NADA) || !conteudoDestino.equals(NADA)) {
 			throw new MovimentoInvalidoException();
 		}
+
+		final int movimentoColuna = Math.abs(origem.getColuna() - destino.getColuna());
+		final int movimentoLinha = Math.abs(origem.getLinha() - destino.getLinha());
+
+		if (movimentoColuna > MAX_MOVIMENTO || movimentoLinha > MAX_MOVIMENTO) {
+			throw new MovimentoInvalidoException();
+		}
+
+		switch (conteudoOrigem) {
+		case MAIS:
+			// Vertical/Horizontal
+			if (movimentoColuna != 0 && movimentoLinha != 0) {
+				throw new MovimentoInvalidoException();
+			}
+			break;
+		case XIS:
+			// Diagonal
+			if (movimentoColuna != movimentoLinha) {
+				throw new MovimentoInvalidoException();
+			}
+			break;
+		}
+
 	}
 
 }
