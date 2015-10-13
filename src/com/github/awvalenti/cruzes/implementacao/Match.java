@@ -54,14 +54,12 @@ public class Match extends Partida {
 			return;
 		}
 
-		if (DEBUG) {
-			System.out.println("Desenhando tabuleiro");
-		}
-
-		visualizacaoTabuleiro.desenhar(tabuleiro);
+		
 
 		while (!analisador.determinarEstado(tabuleiro).isFinalizado()) {
-
+			
+			visualizacaoTabuleiro.desenhar(tabuleiro);
+			
 			timeAtual = tabuleiro.getVezDeQuem();
 
 			if (DEBUG) {
