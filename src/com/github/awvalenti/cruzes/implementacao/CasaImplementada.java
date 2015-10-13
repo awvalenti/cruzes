@@ -9,11 +9,11 @@ public class CasaImplementada implements Casa {
 	private ConteudoCasa conteudo;
 	private final CorCasa cor;
 
-	public CasaImplementada(final CorCasa cor) {
-		this(cor, ConteudoCasa.NADA);
-	}
-
 	public CasaImplementada(final CorCasa cor, final ConteudoCasa conteudo) {
+		if (cor == null || conteudo == null) {
+			throw new NullPointerException("Conteudo e cor não podem ser nulos.");
+		}
+
 		this.cor = cor;
 		this.conteudo = conteudo;
 	}
@@ -30,6 +30,10 @@ public class CasaImplementada implements Casa {
 
 	@Override
 	public void setConteudo(final ConteudoCasa conteudo) {
+		if (conteudo == null) {
+			throw new NullPointerException("Conteudo não podem ser nulo.");
+		}
+
 		this.conteudo = conteudo;
 	}
 

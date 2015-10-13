@@ -106,6 +106,9 @@ public class TabuleiroLeituraEscritaImplementado implements TabuleiroLeituraEscr
 
 	@Override
 	public void fazerMovimento(final Movimento m) throws PosicaoInvalidaException, MovimentoInvalidoException {
+		if (m == null) {
+			throw new NullPointerException("Movimento não pode ser nulo.");
+		}
 		fazerMovimento(m.getOrigem(), m.getDestino());
 
 		this.vez = this.vez.equals(Time.XIS) ? Time.MAIS : Time.XIS;
