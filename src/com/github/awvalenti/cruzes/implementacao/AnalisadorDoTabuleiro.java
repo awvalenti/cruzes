@@ -6,6 +6,7 @@ import com.github.awvalenti.cruzes.api.excecoes.PosicaoInvalidaException;
 import com.github.awvalenti.cruzes.api.interfaces.AnalisadorTabuleiro;
 import com.github.awvalenti.cruzes.api.interfaces.EstadoJogo;
 import com.github.awvalenti.cruzes.api.interfaces.TabuleiroLeitura;
+import com.github.awvalenti.cruzes.test.mock.Posicao;
 
 public class AnalisadorDoTabuleiro implements AnalisadorTabuleiro {
 
@@ -42,13 +43,11 @@ public class AnalisadorDoTabuleiro implements AnalisadorTabuleiro {
 		for (int i = 0; i < tabuleiro.getNumeroColunas(); i++) {
 			for (int j = 0; j < tabuleiro.getNumeroLinhas(); j++) {
 
-				System.out.println("Mais: " + qtdMais + "\nXis:" + qtdXis);
 
 				if (qtdXis == 0) {
 					terminou = true;
 					timeVencedor = Time.MAIS;
 
-					System.out.println("Xis perdeu por falta de peças");
 
 					return new EstadoDoJogo(terminou, timeVencedor);
 				}
@@ -57,7 +56,6 @@ public class AnalisadorDoTabuleiro implements AnalisadorTabuleiro {
 					terminou = true;
 					timeVencedor = Time.XIS;
 
-					System.out.println("Mais perdeu por falta de peças");
 
 					return new EstadoDoJogo(terminou, timeVencedor);
 				}
@@ -66,7 +64,6 @@ public class AnalisadorDoTabuleiro implements AnalisadorTabuleiro {
 					terminou = true;
 					timeVencedor = Time.MAIS;
 
-					System.out.println("Xis perdeu por estar travado");
 
 					return new EstadoDoJogo(terminou, timeVencedor);
 				}
@@ -75,7 +72,6 @@ public class AnalisadorDoTabuleiro implements AnalisadorTabuleiro {
 					terminou = true;
 					timeVencedor = Time.XIS;
 
-					System.out.println("Mais perdeu por estar travado");
 
 					return new EstadoDoJogo(terminou, timeVencedor);
 				}
@@ -87,13 +83,13 @@ public class AnalisadorDoTabuleiro implements AnalisadorTabuleiro {
 	}
 
 	private boolean estahTravado(TabuleiroLeitura tabuleiro, ConteudoCasa conteudo) {
-		boolean estahTravado = false;
+		boolean estahTravado = true;
 		for (int i = 0; i < tabuleiro.getNumeroColunas(); i++) {
 			for (int j = 0; j < tabuleiro.getNumeroLinhas(); j++) {
 				try {
 					if (tabuleiro.getConteudoDaCasa(new Posicao(i, j)).equals(conteudo)) {
-						if (!temMovimentoPossivel(tabuleiro, conteudo, new Posicao(i, j))) {
-							estahTravado = true;
+						if (temMovimentoPossivel(tabuleiro, conteudo, new Posicao(i, j))) {
+							estahTravado = false;
 						}
 					}
 				} catch (PosicaoInvalidaException e) {
@@ -110,11 +106,10 @@ public class AnalisadorDoTabuleiro implements AnalisadorTabuleiro {
 		int coluna = posicao.getColuna();
 
 		if (conteudo == ConteudoCasa.XIS) {
-			System.out.println("XIS: "+verificaSeXTemCasasVaziasAoRedor(tabuleiro, linha, coluna));
 			return verificaSeXTemCasasVaziasAoRedor(tabuleiro, linha, coluna);
 		}
 		if (conteudo == ConteudoCasa.MAIS) {
-			System.out.println("Mais: "+ verificaSeXTemCasasVaziasAoRedor(tabuleiro, linha, coluna));
+
 			return verificaSeMaisTemCasaVaziaAoRedor(tabuleiro, linha, coluna);
 		}
 

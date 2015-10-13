@@ -1,12 +1,13 @@
-package com.github.awvalenti.cruzes.implementacao;
+package com.github.awvalenti.cruzes.test.mock;
 
 import com.github.awvalenti.cruzes.api.interfaces.EstadoJogo;
+import com.github.awvalenti.cruzes.implementacao.AnalisadorDoTabuleiro;
 
 public class Main {
 
 	public static void main(String[] args) {
 		TabuleiroLeituraImpl tab = new TabuleiroLeituraImpl();
-		tab.preencherTabuleiroCenario2();
+		tab.xisDuasPecasFechadas();
 		AnalisadorDoTabuleiro analisador = new AnalisadorDoTabuleiro();
 		
 		EstadoJogo estado = analisador.determinarEstado(tab);

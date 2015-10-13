@@ -1,4 +1,4 @@
-package com.github.awvalenti.cruzes.implementacao;
+package com.github.awvalenti.cruzes.test.mock;
 
 public class Posicao implements com.github.awvalenti.cruzes.api.interfaces.Posicao {
 	

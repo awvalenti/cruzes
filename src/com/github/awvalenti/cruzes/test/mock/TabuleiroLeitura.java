@@ -1,4 +1,4 @@
-package com.github.awvalenti.cruzes.implementacao;
+package com.github.awvalenti.cruzes.test.mock;
 
 import com.github.awvalenti.cruzes.api.enums.ConteudoCasa;
 import com.github.awvalenti.cruzes.api.enums.CorCasa;
@@ -10,9 +10,7 @@ public class TabuleiroLeitura implements com.github.awvalenti.cruzes.api.interfa
 
 	private TabuleiroLeituraImpl tabuleiro = new TabuleiroLeituraImpl();
 	
-	public TabuleiroLeitura() {
-		tabuleiro.preencherTabuleiroCenario1();
-	}
+
 	
 	@Override
 	public int getNumeroLinhas() {
