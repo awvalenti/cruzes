@@ -9,16 +9,15 @@ import com.github.awvalenti.cruzes.api.interfaces.TabuleiroLeitura;
 
 public class AnalisadorDoTabuleiro implements AnalisadorTabuleiro {
 
-	
 	@Override
 	public EstadoJogo determinarEstado(TabuleiroLeitura tabuleiro) {
 		boolean terminou = false;
 		Time timeVencedor = null;
 
+		int qtdXis, qtdMais;
+		qtdMais = qtdXis = 0;
 		for (int i = 0; i < tabuleiro.getNumeroColunas(); i++) {
 			for (int j = 0; j < tabuleiro.getNumeroLinhas(); j++) {
-				int qtdXis, qtdMais;
-				qtdMais = qtdXis = 0;
 
 				ConteudoCasa conteudoCasa = null;
 				try {
@@ -31,25 +30,33 @@ public class AnalisadorDoTabuleiro implements AnalisadorTabuleiro {
 						qtdXis++;
 						break;
 					default:
-						//não faz nada...
-						
-					}
+						// não faz nada...
 
-					if (qtdXis == 0) {
-						terminou = true;
-						timeVencedor = Time.MAIS;
-
-						return new EstadoDoJogo(terminou, timeVencedor);
-					}
-
-					if (qtdMais == 0) {
-						terminou = true;
-						timeVencedor = Time.XIS;
-						return new EstadoDoJogo(terminou, timeVencedor);
 					}
 				} catch (PosicaoInvalidaException e) {
 					// Deu ruim...
 				}
+			}
+		}
+
+		for (int i = 0; i < tabuleiro.getNumeroColunas(); i++) {
+			for (int j = 0; j < tabuleiro.getNumeroLinhas(); j++) {
+
+				System.out.println("Mais: " + qtdMais + "\nXis:" + qtdXis);
+
+				if (qtdXis == 0) {
+					terminou = true;
+					timeVencedor = Time.MAIS;
+
+					return new EstadoDoJogo(terminou, timeVencedor);
+				}
+
+				if (qtdMais == 0) {
+					terminou = true;
+					timeVencedor = Time.XIS;
+					return new EstadoDoJogo(terminou, timeVencedor);
+				}
+
 				if (estahTravado(tabuleiro, ConteudoCasa.XIS)) {
 					terminou = true;
 					timeVencedor = Time.MAIS;
