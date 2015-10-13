@@ -17,25 +17,20 @@ public interface VisualizacaoTabuleiro {
 	static final Color COR_CASA_SELECIONADA = new Color(79,123,215);
 	static final Color COR_CASA_NAO_SELECIONADA_1 = new Color(180,147,100);
 	static final Color COR_CASA_NAO_SELECIONADA_2 = new Color(149,95,33);
-	static final String CASA_VAZIA = " ";
-	static final int TAMANHO_DO_TABULEIRO = 5;
-	static final int LATERAL_EM_PIXELS = 400;
 	
-	TabuleiroTeste tabuleiroBase = new TabuleiroTeste();
-	
-	static JFrame criarJanela() {
+	static JFrame criarJanela(int LARGURA) {
 		
 		JFrame janela = new JFrame("cruzes");
-		janela.setLayout(new GridLayout(TAMANHO_DO_TABULEIRO, TAMANHO_DO_TABULEIRO));
-		janela.setSize(LATERAL_EM_PIXELS, LATERAL_EM_PIXELS);
+		janela.setLayout(new GridLayout(LARGURA, LARGURA));
+		janela.setSize(LARGURA*80, LARGURA*80);
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		return janela;
 	}
 	
 	static void preencherJanelaComCasas(TabuleiroTeste tabuleiro, JFrame janela, MouseAdapter tratadorCliques) {
 		
-		for (int i = 0; i < TAMANHO_DO_TABULEIRO; ++i) {
-			for (int j = 0; j < TAMANHO_DO_TABULEIRO; ++j) {
+	for (int i = 0; i < tabuleiro.TAMANHO_DO_TABULEIRO; ++i) {
+			for (int j = 0; j < tabuleiro.TAMANHO_DO_TABULEIRO; ++j) {
 				
 				Peca peca = tabuleiro.getPeca(i,j);
 				JLabel label = new JLabel(peca.getPeca());
@@ -44,7 +39,7 @@ public interface VisualizacaoTabuleiro {
 				label.setBackground((i+j)%2 == 0 ? COR_CASA_NAO_SELECIONADA_1 : COR_CASA_NAO_SELECIONADA_2);
 				label.setOpaque(true);
 				label.addMouseListener(tratadorCliques);
-				label.setName(peca.tipoDePeca);
+				label.setName(peca.nomePeca);
 				janela.add(label);
 				}
 		}
@@ -54,6 +49,7 @@ public interface VisualizacaoTabuleiro {
 		
 		janela.setLocationRelativeTo(null);
 		janela.setVisible(true);
+		janela.getFocusableWindowState();
 	}
 	static class TratadorCliques extends MouseAdapter {
 		
@@ -81,8 +77,12 @@ public interface VisualizacaoTabuleiro {
 		}
 
 		private void moverPeca(JLabel casaClicada) {
-			
-			if(casaClicada.getName().compareTo("NULO") == 0) {
+			if(casaClicada == casaSelecionada) {
+				casaClicada.setBackground(EX_COR_CASA_SELECIONADA);
+				casaSelecionada = null; 
+				return;
+			} else {
+			//if(casaClicada.getName().compareTo("NULO") == 0) {
 				//if(casaSelecionada.getName().compareTo("XIS") == 0) {
 					//if(casaSelecionada.getY() != casaClicada.getY() && casaSelecionada.getX() != casaClicada.getX()) 
 						casaClicada.setIcon((ImageIcon) casaSelecionada.getIcon()); 
