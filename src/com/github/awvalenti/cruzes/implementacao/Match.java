@@ -19,7 +19,7 @@ public class Match extends Partida {
 	private Time timeAtual;
 	private final int numeroLinhasTabuleiro;
 	private final int numeroColunasTabuleiro;
-	private static final boolean DEBUG = false;
+	private static final boolean DEBUG = true;
 
 	// Por padrão assume tabuleiro 5x5
 	public Match(final Jogador jogador1, final Jogador jogador2,
@@ -59,7 +59,9 @@ public class Match extends Partida {
 			.println("O tamanho para criação do tabuleiro não é válido!");
 			return;
 		}
-
+		if (DEBUG) {
+			System.out.println("Criou tabuleiro");
+		}
 		while (!analisador.determinarEstado(tabuleiro).isFinalizado()) {
 
 			visualizacaoTabuleiro.desenhar(tabuleiro);
