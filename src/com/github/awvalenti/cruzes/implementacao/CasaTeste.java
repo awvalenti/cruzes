@@ -1,10 +1,10 @@
 package com.github.awvalenti.cruzes.implementacao;
 
-public class Casa {
+public class CasaTeste {
 	
 	private Peca peca;
 
-	public Casa(Peca peca) {
+	public CasaTeste(Peca peca) {
 		super();
 		this.peca = peca;
 	}

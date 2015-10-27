@@ -11,6 +11,7 @@ import com.github.awvalenti.cruzes.api.enums.CorCasa;
 import com.github.awvalenti.cruzes.api.enums.Time;
 import com.github.awvalenti.cruzes.api.excecoes.MovimentoInvalidoException;
 import com.github.awvalenti.cruzes.api.excecoes.PosicaoInvalidaException;
+import com.github.awvalenti.cruzes.api.interfaces.Casa;
 import com.github.awvalenti.cruzes.api.interfaces.Movimento;
 import com.github.awvalenti.cruzes.api.interfaces.Posicao;
 import com.github.awvalenti.cruzes.api.interfaces.TabuleiroLeituraEscrita;
@@ -119,6 +120,7 @@ public class TabuleiroLeituraEscritaImplementado implements
 		if (m == null) {
 			throw new NullPointerException("Movimento não pode ser nulo.");
 		}
+
 		fazerMovimento(m.getOrigem(), m.getDestino());
 
 		this.vez = this.vez.equals(Time.XIS) ? Time.MAIS : Time.XIS;
@@ -133,6 +135,20 @@ public class TabuleiroLeituraEscritaImplementado implements
 
 		casaDestino.setConteudo(casaOrigem.getConteudo());
 		casaOrigem.setConteudo(NADA);
+
+		atualizarCasas(casaDestino, destino);
+	}
+
+	private void atualizarCasas(final Casa casaDestino, final Posicao destino) {
+		// Achar casas adjacentes
+		final Casa[] adjacentes = new Casa[0];
+
+		for (final com.github.awvalenti.cruzes.api.interfaces.Casa casa : adjacentes) {
+			if (!casa.getConteudo().equals(NADA)) {
+				casa.setConteudo(casaDestino.getConteudo());
+			}
+		}
+
 	}
 
 	@SuppressWarnings("incomplete-switch")
@@ -141,16 +157,16 @@ public class TabuleiroLeituraEscritaImplementado implements
 		final ConteudoCasa conteudoOrigem = this.getConteudoDaCasa(origem);
 		final ConteudoCasa conteudoDestino = this.getConteudoDaCasa(destino);
 
+		// Validacao de conteudo
 		if (conteudoOrigem.equals(NADA) || !conteudoDestino.equals(NADA)) {
 			throw new MovimentoInvalidoException();
 		}
 
+		// Validacao de distancia de movimento
 		final int movimentoColuna = Math.abs(origem.getColuna()
 				- destino.getColuna());
 		final int movimentoLinha = Math.abs(origem.getLinha()
 				- destino.getLinha());
-		// Não realiza movimento jogador humano "MAIS" -- Sugestão henrique
-		// verificar o scanner do jogador
 		if (movimentoColuna > MAX_MOVIMENTO || movimentoLinha > MAX_MOVIMENTO) {
 			System.out
 					.println("TabuleiroLeituraEscritaImplementado.validateMovimento()");
@@ -159,11 +175,11 @@ public class TabuleiroLeituraEscritaImplementado implements
 
 		}
 
+		// Validacao de direcao de movimento
 		switch (conteudoOrigem) {
 		case MAIS:
 			// Vertical/Horizontal
 			if (movimentoColuna != 0 && movimentoLinha != 0) {
-				System.out.println("teste");
 				throw new MovimentoInvalidoException();
 			}
 			break;

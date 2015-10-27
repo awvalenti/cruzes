@@ -5,38 +5,38 @@ import static com.github.awvalenti.cruzes.implementacao.RecortePeca.*;
 public class TabuleiroTeste {
 
 	public int TAMANHO_DO_TABULEIRO;
-	Casa[][] casas;	
+	CasaTeste[][] casas;	
 
-	Casa[][] cinco = new Casa[][] {
+	CasaTeste[][] cinco = new CasaTeste[][] {
 			
-			{ new Casa(new Peca(XIS,"XIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(XIS,"XIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(XIS,"XIS"))},
-			{ new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO"))},
-			{ new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO"))},
-			{ new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO"))},
-			{ new Casa(new Peca(MAIS,"MAIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(MAIS,"MAIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(MAIS,"MAIS"))}
+			{ new CasaTeste(new Peca(XIS,"XIS")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(XIS,"XIS")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(XIS,"XIS"))},
+			{ new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO"))},
+			{ new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO"))},
+			{ new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO"))},
+			{ new CasaTeste(new Peca(MAIS,"MAIS")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(MAIS,"MAIS")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(MAIS,"MAIS"))}
 
 	};
-	Casa[][] sete = new Casa[][] {
+	CasaTeste[][] sete = new CasaTeste[][] {
 			
-			{ new Casa(new Peca(XIS,"XIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(XIS,"XIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(XIS,"XIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(XIS,"XIS"))},
-			{ new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO"))},
-			{ new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO"))},
-			{ new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO"))},
-			{ new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO"))},			
-			{ new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO"))},
-			{ new Casa(new Peca(MAIS,"MAIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(MAIS,"MAIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(MAIS,"MAIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(MAIS,"MAIS"))}
+			{ new CasaTeste(new Peca(XIS,"XIS")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(XIS,"XIS")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(XIS,"XIS")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(XIS,"XIS"))},
+			{ new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO"))},
+			{ new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO"))},
+			{ new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO"))},
+			{ new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO"))},			
+			{ new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO"))},
+			{ new CasaTeste(new Peca(MAIS,"MAIS")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(MAIS,"MAIS")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(MAIS,"MAIS")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(MAIS,"MAIS"))}
 	};
-	Casa[][] nove = new Casa[][] {
+	CasaTeste[][] nove = new CasaTeste[][] {
 		
-		{ new Casa(new Peca(XIS,"XIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(XIS,"XIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(XIS,"XIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(XIS,"XIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(XIS,"XIS"))},
-		{ new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO"))},
-		{ new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO"))},
-		{ new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO"))},
-		{ new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO"))},
-		{ new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO"))},		
-		{ new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO"))},
-		{ new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(NULO,"NULO"))},
-		{ new Casa(new Peca(MAIS,"MAIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(MAIS,"MAIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(MAIS,"MAIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(MAIS,"MAIS")), new Casa(new Peca(NULO,"NULO")), new Casa(new Peca(MAIS,"MAIS"))}
+		{ new CasaTeste(new Peca(XIS,"XIS")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(XIS,"XIS")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(XIS,"XIS")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(XIS,"XIS")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(XIS,"XIS"))},
+		{ new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO"))},
+		{ new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO"))},
+		{ new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO"))},
+		{ new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO"))},
+		{ new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO"))},		
+		{ new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO"))},
+		{ new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(NULO,"NULO"))},
+		{ new CasaTeste(new Peca(MAIS,"MAIS")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(MAIS,"MAIS")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(MAIS,"MAIS")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(MAIS,"MAIS")), new CasaTeste(new Peca(NULO,"NULO")), new CasaTeste(new Peca(MAIS,"MAIS"))}
 	};
 	public TabuleiroTeste(int LARGURA) {
 	
