@@ -16,12 +16,11 @@ import com.github.awvalenti.cruzes.api.interfaces.Movimento;
 import com.github.awvalenti.cruzes.api.interfaces.Posicao;
 import com.github.awvalenti.cruzes.api.interfaces.TabuleiroLeituraEscrita;
 
-public class TabuleiroLeituraEscritaImplementado implements
-		TabuleiroLeituraEscrita {
+public class TabuleiroLeituraEscritaImplementado implements TabuleiroLeituraEscrita {
 
 	private static final int MAX_MOVIMENTO = 1;
 	private final int tamanho;
-	private final CasaImplementada[][] tabuleiro;
+	private final Casa[][] tabuleiro;
 	private Time vez;
 
 	public TabuleiroLeituraEscritaImplementado(final int tamanho) {
@@ -33,10 +32,9 @@ public class TabuleiroLeituraEscritaImplementado implements
 
 		// Tabuleiro
 		this.tabuleiro = new CasaImplementada[this.tamanho][this.tamanho];
-		for (int x = 0; x < tabuleiro.length; x++) {
-			for (int y = 0; y < tabuleiro[x].length; y++) {
-				this.tabuleiro[x][y] = new CasaImplementada(escolherCor(x + y),
-						escolherConteudo(y, x));
+		for (int x = 0; x < this.tabuleiro.length; x++) {
+			for (int y = 0; y < this.tabuleiro[x].length; y++) {
+				this.tabuleiro[x][y] = new CasaImplementada(this.escolherCor(x + y), this.escolherConteudo(y, x));
 			}
 		}
 	}
@@ -59,36 +57,32 @@ public class TabuleiroLeituraEscritaImplementado implements
 
 	@Override
 	public int getNumeroLinhas() {
-		return tamanho;
+		return this.tamanho;
 	}
 
 	@Override
 	public int getNumeroColunas() {
-		return tamanho;
+		return this.tamanho;
 	}
 
 	@Override
-	public CorCasa getCorDaCasa(final Posicao p)
-			throws PosicaoInvalidaException {
-		return getCasa(p).getCor();
+	public CorCasa getCorDaCasa(final Posicao p) throws PosicaoInvalidaException {
+		return this.getCasa(p).getCor();
 	}
 
 	@Override
-	public ConteudoCasa getConteudoDaCasa(final Posicao p)
-			throws PosicaoInvalidaException {
-		return getCasa(p).getConteudo();
+	public ConteudoCasa getConteudoDaCasa(final Posicao p) throws PosicaoInvalidaException {
+		return this.getCasa(p).getConteudo();
 	}
 
-	private CasaImplementada getCasa(final Posicao p)
-			throws PosicaoInvalidaException {
-		validatePosition(p);
+	private Casa getCasa(final Posicao p) throws PosicaoInvalidaException {
+		this.validatePosition(p);
 		return this.tabuleiro[p.getLinha()][p.getColuna()];
 
 	}
 
-	private void validatePosition(final Posicao p)
-			throws PosicaoInvalidaException {
-		if (!isPositionValid(p)) {
+	private void validatePosition(final Posicao p) throws PosicaoInvalidaException {
+		if (!this.isPositionValid(p)) {
 			throw new PosicaoInvalidaException();
 		}
 	}
@@ -98,7 +92,7 @@ public class TabuleiroLeituraEscritaImplementado implements
 			return false;
 		}
 
-		if (!isDimensionValid(p.getLinha()) || !isDimensionValid(p.getColuna())) {
+		if (!this.isDimensionValid(p.getLinha()) || !this.isDimensionValid(p.getColuna())) {
 			return false;
 		}
 
@@ -115,38 +109,36 @@ public class TabuleiroLeituraEscritaImplementado implements
 	}
 
 	@Override
-	public void fazerMovimento(final Movimento m)
-			throws PosicaoInvalidaException, MovimentoInvalidoException {
+	public void fazerMovimento(final Movimento m) throws PosicaoInvalidaException, MovimentoInvalidoException {
 		if (m == null) {
 			throw new NullPointerException("Movimento não pode ser nulo.");
 		}
 
-		fazerMovimento(m.getOrigem(), m.getDestino());
+		this.fazerMovimento(m.getOrigem(), m.getDestino());
 
 		this.vez = this.vez.equals(Time.XIS) ? Time.MAIS : Time.XIS;
 	}
 
-	private void fazerMovimento(final Posicao origem, final Posicao destino)
-			throws PosicaoInvalidaException, MovimentoInvalidoException {
-		validateMovimento(origem, destino);
+	private void fazerMovimento(final Posicao origem, final Posicao destino) throws PosicaoInvalidaException, MovimentoInvalidoException {
+		this.validateMovimento(origem, destino);
 
-		final CasaImplementada casaOrigem = this.getCasa(origem);
-		final CasaImplementada casaDestino = this.getCasa(destino);
+		final Casa casaOrigem = this.getCasa(origem);
+		final Casa casaDestino = this.getCasa(destino);
 
 		casaDestino.setConteudo(casaOrigem.getConteudo());
 		casaOrigem.setConteudo(NADA);
 
-		atualizarCasas(casaDestino, destino);
+		this.atualizarCasas(casaDestino, destino);
 	}
 
-	private void atualizarCasas(final Casa casaDestino, final Posicao destino) {
+	private void atualizarCasas(final Casa casaDestino, final Posicao destino) throws PosicaoInvalidaException {
 		// Achar casas adjacentes
 
 		if (casaDestino.getConteudo().equals(ConteudoCasa.MAIS)) {
 
 		}
 
-		final Casa[] adjacentes = new Casa[0];
+		final Casa[] adjacentes = this.elencarAdjacentes(destino);
 
 		for (final Casa casa : adjacentes) {
 
@@ -157,9 +149,22 @@ public class TabuleiroLeituraEscritaImplementado implements
 
 	}
 
+	private Casa[] elencarAdjacentes(final Posicao destino) throws PosicaoInvalidaException {
+		final Casa casa = this.getCasa(destino);
+
+		// Escolher casas aqui
+		switch (casa.getConteudo()) {
+		case MAIS:
+			break;
+		case XIS:
+			break;
+		}
+
+		return new Casa[0];
+	}
+
 	@SuppressWarnings("incomplete-switch")
-	private void validateMovimento(final Posicao origem, final Posicao destino)
-			throws PosicaoInvalidaException, MovimentoInvalidoException {
+	private void validateMovimento(final Posicao origem, final Posicao destino) throws PosicaoInvalidaException, MovimentoInvalidoException {
 		final ConteudoCasa conteudoOrigem = this.getConteudoDaCasa(origem);
 		final ConteudoCasa conteudoDestino = this.getConteudoDaCasa(destino);
 
@@ -169,13 +174,10 @@ public class TabuleiroLeituraEscritaImplementado implements
 		}
 
 		// Validacao de distancia de movimento
-		final int movimentoColuna = Math.abs(origem.getColuna()
-				- destino.getColuna());
-		final int movimentoLinha = Math.abs(origem.getLinha()
-				- destino.getLinha());
+		final int movimentoColuna = Math.abs(origem.getColuna() - destino.getColuna());
+		final int movimentoLinha = Math.abs(origem.getLinha() - destino.getLinha());
 		if (movimentoColuna > MAX_MOVIMENTO || movimentoLinha > MAX_MOVIMENTO) {
-			System.out
-					.println("TabuleiroLeituraEscritaImplementado.validateMovimento()");
+			System.out.println("TabuleiroLeituraEscritaImplementado.validateMovimento()");
 
 			throw new MovimentoInvalidoException();
 

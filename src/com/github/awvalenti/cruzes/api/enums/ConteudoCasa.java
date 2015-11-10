@@ -7,12 +7,10 @@ public enum ConteudoCasa {
 
 	ConteudoCasa(final String conteudo) {
 		this.conteudo = conteudo;
-
 	}
 
 	@Override
 	public String toString() {
-
 		return this.conteudo;
 	}
 }
