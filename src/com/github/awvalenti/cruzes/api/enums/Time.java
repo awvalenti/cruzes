@@ -1,5 +1,7 @@
 package com.github.awvalenti.cruzes.api.enums;
 
+import com.github.awvalenti.cruzes.api.interfaces.Casa;
+
 public enum Time {
 	MAIS('+'), XIS('x');
 
@@ -11,6 +13,20 @@ public enum Time {
 
 	public char getCaractere() {
 		return caractere;
+	}
+
+	void obterCasasAdjacentes(final Casa casaDestino) {
+
+		switch (casaDestino.getConteudo()) {
+		case MAIS:
+			break;
+		case NADA:
+			break;
+		case XIS:
+			break;
+		default:
+			break;
+		}
 	}
 
 }

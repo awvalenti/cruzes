@@ -141,9 +141,15 @@ public class TabuleiroLeituraEscritaImplementado implements
 
 	private void atualizarCasas(final Casa casaDestino, final Posicao destino) {
 		// Achar casas adjacentes
+
+		if (casaDestino.getConteudo().equals(ConteudoCasa.MAIS)) {
+
+		}
+
 		final Casa[] adjacentes = new Casa[0];
 
-		for (final com.github.awvalenti.cruzes.api.interfaces.Casa casa : adjacentes) {
+		for (final Casa casa : adjacentes) {
+
 			if (!casa.getConteudo().equals(NADA)) {
 				casa.setConteudo(casaDestino.getConteudo());
 			}
