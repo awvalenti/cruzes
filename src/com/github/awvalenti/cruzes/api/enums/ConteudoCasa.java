@@ -4,7 +4,7 @@ public enum ConteudoCasa {
 	MAIS("+"), XIS("x"), NADA("_");
 
 	private String conteudo;
-
+	
 	ConteudoCasa(final String conteudo) {
 		this.conteudo = conteudo;
 
@@ -16,3 +16,4 @@ public enum ConteudoCasa {
 		return this.conteudo;
 	}
 }
+
