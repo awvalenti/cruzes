@@ -41,9 +41,16 @@ public class AnalisadorDoTabuleiro implements AnalisadorTabuleiro {
 			}
 		}
 
+		final EstadoJogo estado = verificaSeHaTimeVencedor(tabuleiro, terminou, timeVencedor, qtdXis, qtdMais);
+		return estado;
+	}
+
+	private EstadoJogo verificaSeHaTimeVencedor(final TabuleiroLeitura tabuleiro, boolean terminou, Time timeVencedor,
+			int qtdXis, int qtdMais) {
 		for (int i = 0; i < tabuleiro.getNumeroColunas(); i++) {
 			for (int j = 0; j < tabuleiro.getNumeroLinhas(); j++) {
 
+				//Derrota por falta de peça
 				if (qtdXis == 0) {
 					terminou = true;
 					timeVencedor = Time.MAIS;
@@ -57,7 +64,8 @@ public class AnalisadorDoTabuleiro implements AnalisadorTabuleiro {
 
 					return new EstadoDoJogo(terminou, timeVencedor);
 				}
-
+				
+				//Derrota por não ter mais movimentos disponiveis
 				if (estahTravado(tabuleiro, ConteudoCasa.XIS)) {
 					terminou = true;
 					timeVencedor = Time.MAIS;
