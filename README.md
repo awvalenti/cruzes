@@ -1,6 +1,6 @@
 # Cruzes
 
-Jogo de tabauleiro inventado para a disciplina de Programação Orientada a Objetos.
+Jogo de tabuleiro inventado para a disciplina de Programação Orientada a Objetos.
 
 O código foi inicialmente escrito pelo professor e posteriormente incrementado
 pelos alunos. A versão atual não está finalizada e contém várias pontas soltas.
